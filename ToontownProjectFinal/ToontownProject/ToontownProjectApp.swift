@@ -24,10 +24,10 @@ struct ToontownProjectApp: App {
         }
     }
     func loadData(){
-        toontownViewModel.getPopulationData()
-        toontownViewModel.getInvasionData()
-        toontownViewModel.getSillyMeterData()
-        toontownViewModel.getFieldOfficeData()
+        var _ = toontownViewModel.getPopulationData()
+        var _ = toontownViewModel.getInvasionData()
+        var _ = toontownViewModel.getSillyMeterData()
+        var _ = toontownViewModel.getFieldOfficeData()
     }
 }
 

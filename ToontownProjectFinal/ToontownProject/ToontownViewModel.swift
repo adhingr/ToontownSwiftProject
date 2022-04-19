@@ -10,10 +10,12 @@ import Foundation
 
 class ToontownViewModel: ObservableObject {
     
+    
     @Published var sillymeter = SillyMeter()
-    @Published var invasionsStuff = Invasions()
     @Published var populationStuff = Population()
     @Published var fieldOfficeStuff = FieldOffice()
+    @Published var invasionEachStuff = [Invasion]()
+    @Published var fieldOfficeEachStuff = [FieldOffice]()
     
     func getSillyMeterData() -> Data? {
         let session = URLSession.shared
@@ -42,7 +44,7 @@ class ToontownViewModel: ObservableObject {
           sem.wait()
           if let sillyMeterData = try? JSONSerialization.jsonObject(with: dataReceived!, options: .allowFragments) as? [String: Any] {
                 if let rewards = sillyMeterData["rewards"] as? [String] {
-                    //print(rewards)
+                    print(rewards)
                     sillymeter.rewards = rewards
                     //print(type(of: rewards))
                 }
@@ -55,12 +57,12 @@ class ToontownViewModel: ObservableObject {
                     sillymeter.winner = true
                     sillymeter.winnerString = winner
                 } else {
-                    print("NULL")
+                    //print("NULL")
                     sillymeter.winner = false
                     sillymeter.winnerString = "No Winner"
                 }
                 if let state = sillyMeterData["state"] as? String {
-                    print(state)
+                    //print(state)
                     sillymeter.state = state
                 }
                 if let hp = sillyMeterData["hp"] as? Int {
@@ -99,20 +101,26 @@ class ToontownViewModel: ObservableObject {
           sem.wait()
         if let invasionData = try? JSONSerialization.jsonObject(with: dataReceived!, options: .allowFragments) as? [String: Any] {
             if let invasions = invasionData["invasions"] as? [String: [String: Any]] {
-                let keys = invasions.keys
-                var keyArray = [String]()
-                for key in keys {
-                    keyArray.append(String(key))
-                }
-                invasionsStuff.invasionDistricts = keyArray
-                for invasionName in keyArray{
-                    //print(invasions[invasionName]!["type"]!)
-                    invasionsStuff.invasionDict[invasionName] = (invasions[invasionName]!["type"]! as? String)
+                for key in invasions.keys { 
+                    let tempInvasion = Invasion()
+                    let tempInvasionNameString = String(key)
+                    let tempInvasionTypeString = (invasions[key]!["type"]! as? String)
+                    let tempInvasionProgressString = (invasions[key]!["progress"]! as? String)
+                    tempInvasion.districtName = tempInvasionNameString
+                    tempInvasion.districtType = tempInvasionTypeString!
+                    tempInvasion.districtProgress = tempInvasionProgressString!
+                    
+                    let components = tempInvasionProgressString?.components(separatedBy: "/")
+                    let currCogs = (Double(components![1])! - Double(components![0])!)
+                    var temp = 0.7 * currCogs
+                    temp = temp / 100
+                    tempInvasion.timeRemaining = Int(temp)
+                    
+                    invasionEachStuff.append(tempInvasion)
                 }
                 //print(invasions)
             }
         }
-
           return dataReceived
     }
     
@@ -142,7 +150,7 @@ class ToontownViewModel: ObservableObject {
           // This line will wait until the semaphore has been signaled
           // which will be once the data task has completed
           sem.wait()
-          if let populationData = try? JSONSerialization.jsonObject(with: dataReceived!, options: .allowFragments) as? [String: Any] {
+        if let populationData = try? JSONSerialization.jsonObject(with: dataReceived!, options: .allowFragments) as? [String: Any] {
             if let populations = populationData["totalPopulation"] as? Int {
                 print("population: \(populations)")
                 //populationhaha.population = populations
@@ -156,6 +164,7 @@ class ToontownViewModel: ObservableObject {
     }
     
     func getFieldOfficeData() -> Data? {
+        
         let session = URLSession.shared
         var dataReceived: Data?
         //var dataString: String = ""
@@ -180,19 +189,71 @@ class ToontownViewModel: ObservableObject {
           // This line will wait until the semaphore has been signaled
           // which will be once the data task has completed
           sem.wait()
+        
         if let fieldOfficeData = try? JSONSerialization.jsonObject(with: dataReceived!, options: .allowFragments) as? [String: Any] {
-            if let fieldOffice = fieldOfficeData["fieldOffices"] as? [Int: [String: Any]] {
-                let keys = fieldOffice.keys
-                var keyArray = [Int]()
-                for key in keys {
-                    keyArray.append(Int(key))
-                }
-                fieldOfficeStuff.zoneID = keyArray
-                for zone in keyArray{
-                    //print(fieldOffice[zone]!["difficulty"]!)
-                    fieldOfficeStuff.FieldOfficeDict[zone] = fieldOffice[zone]!["difficulty"]! as? Int
+            if let fieldOffice = fieldOfficeData["fieldOffices"] as? [String: [String: Any]] {
+                print("Helloooo")
+                for key in fieldOffice.keys {
+                    var tempStreet: String
+                    let tempOffice = FieldOffice()
+                    let tempOfficeZone = Int(key)
+                    var tempOfficeDifficulty = (fieldOffice[key]!["difficulty"]! as? Int)
+                    let tempOfficeAnnexes = (fieldOffice[key]!["annexes"]! as? Int)
+                    let tempOfficeOpen = (fieldOffice[key]!["open"]! as? Bool)
+                    var tempOpenString: String
+                    if tempOfficeOpen == true{
+                        tempOpenString = "Open"
+                    } else {
+                        tempOpenString = "Closed"
+                    }
+                    
+                    switch tempOfficeZone{
+                    case 3100:
+                        tempStreet = "Walrus Way"
+                    case 3200:
+                        tempStreet = "Sleet Street"
+                    case 3300:
+                        tempStreet = "Polar Place"
+                    case 4100:
+                        tempStreet = "Alto Avenue"
+                    case 4200:
+                        tempStreet = "Baritone Boulevard"
+                    case 4300:
+                        tempStreet = "Tenor Terrace"
+                    case 5100:
+                        tempStreet = "Elm Street"
+                    case 5200:
+                        tempStreet = "Maple Street"
+                    case 5300:
+                        tempStreet = "Oak Street"
+                    case 9100:
+                        tempStreet = "Lullaby Lane"
+                    case 9200:
+                        tempStreet = "Pajama Place"
+                    default:
+                        tempStreet = "Error getting street"
+                    }
+                    if tempOfficeDifficulty == 0{
+                        tempOfficeDifficulty = 1
+                    }
+                    else if tempOfficeDifficulty == 1{
+                        tempOfficeDifficulty = 2
+                    }
+                    else if tempOfficeDifficulty == 2{
+                        tempOfficeDifficulty = 3
+                    }
+                    
+                    
+                    tempOffice.zone = tempOfficeZone!
+                    tempOffice.difficulty = tempOfficeDifficulty!
+                    tempOffice.street = tempStreet
+                    tempOffice.annexes = tempOfficeAnnexes!
+                    tempOffice.open = tempOpenString
+                    
+                    fieldOfficeEachStuff.append(tempOffice)
                 }
             }
+            
         }
           return dataReceived
     }

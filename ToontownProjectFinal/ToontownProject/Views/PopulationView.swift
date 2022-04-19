@@ -14,7 +14,6 @@ struct PopulationView: View {
             Text("Total Population: \(population)")
                 .foregroundColor(.green)
                 .bold()
-                
         }
     }
         

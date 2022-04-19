@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F022671280E566B00747E63 /* SillyMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F022670280E566B00747E63 /* SillyMeterView.swift */; };
+		3F022673280E82D100747E63 /* InvasionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F022672280E82D100747E63 /* InvasionView.swift */; };
+		3F576B732808BCC800B9AA86 /* FieldOfficeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576B722808BCC800B9AA86 /* FieldOfficeView.swift */; };
 		3F78472128074A1B0021BAE9 /* ToontownProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78472028074A1B0021BAE9 /* ToontownProjectApp.swift */; };
 		3F78472328074A1B0021BAE9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78472228074A1B0021BAE9 /* ContentView.swift */; };
 		3F78472528074A1D0021BAE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F78472428074A1D0021BAE9 /* Assets.xcassets */; };
 		3F78472828074A1D0021BAE9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F78472728074A1D0021BAE9 /* Preview Assets.xcassets */; };
 		3F78473228074B4D0021BAE9 /* ToontownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78473128074B4D0021BAE9 /* ToontownViewModel.swift */; };
 		3F78473428074E680021BAE9 /* SillyMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78473328074E680021BAE9 /* SillyMeter.swift */; };
-		3F7847362807CE570021BAE9 /* Invasions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7847352807CE570021BAE9 /* Invasions.swift */; };
+		3F7847362807CE570021BAE9 /* Invasion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7847352807CE570021BAE9 /* Invasion.swift */; };
 		3F7847382807D5D00021BAE9 /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7847372807D5D00021BAE9 /* Population.swift */; };
 		3F78473A2807D8080021BAE9 /* FieldOffice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7847392807D8080021BAE9 /* FieldOffice.swift */; };
 		3F78473E2807DBAD0021BAE9 /* PopulationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78473D2807DBAD0021BAE9 /* PopulationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F022670280E566B00747E63 /* SillyMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SillyMeterView.swift; sourceTree = "<group>"; };
+		3F022672280E82D100747E63 /* InvasionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvasionView.swift; sourceTree = "<group>"; };
+		3F576B722808BCC800B9AA86 /* FieldOfficeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldOfficeView.swift; sourceTree = "<group>"; };
 		3F78471D28074A1B0021BAE9 /* ToontownProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToontownProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F78472028074A1B0021BAE9 /* ToontownProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToontownProjectApp.swift; sourceTree = "<group>"; };
 		3F78472228074A1B0021BAE9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -28,7 +34,7 @@
 		3F78472928074A1D0021BAE9 /* ToontownProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToontownProject.entitlements; sourceTree = "<group>"; };
 		3F78473128074B4D0021BAE9 /* ToontownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToontownViewModel.swift; sourceTree = "<group>"; };
 		3F78473328074E680021BAE9 /* SillyMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SillyMeter.swift; sourceTree = "<group>"; };
-		3F7847352807CE570021BAE9 /* Invasions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invasions.swift; sourceTree = "<group>"; };
+		3F7847352807CE570021BAE9 /* Invasion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invasion.swift; sourceTree = "<group>"; };
 		3F7847372807D5D00021BAE9 /* Population.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
 		3F7847392807D8080021BAE9 /* FieldOffice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldOffice.swift; sourceTree = "<group>"; };
 		3F78473D2807DBAD0021BAE9 /* PopulationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationView.swift; sourceTree = "<group>"; };
@@ -67,11 +73,11 @@
 				3F78473C2807DB110021BAE9 /* Views */,
 				3F78473B2807DAD70021BAE9 /* Elements */,
 				3F78472028074A1B0021BAE9 /* ToontownProjectApp.swift */,
+				3F78473128074B4D0021BAE9 /* ToontownViewModel.swift */,
 				3F78472228074A1B0021BAE9 /* ContentView.swift */,
 				3F78472428074A1D0021BAE9 /* Assets.xcassets */,
 				3F78472928074A1D0021BAE9 /* ToontownProject.entitlements */,
 				3F78472628074A1D0021BAE9 /* Preview Content */,
-				3F78473128074B4D0021BAE9 /* ToontownViewModel.swift */,
 			);
 			path = ToontownProject;
 			sourceTree = "<group>";
@@ -90,7 +96,7 @@
 				3F78473328074E680021BAE9 /* SillyMeter.swift */,
 				3F7847392807D8080021BAE9 /* FieldOffice.swift */,
 				3F7847372807D5D00021BAE9 /* Population.swift */,
-				3F7847352807CE570021BAE9 /* Invasions.swift */,
+				3F7847352807CE570021BAE9 /* Invasion.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -99,6 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				3F78473D2807DBAD0021BAE9 /* PopulationView.swift */,
+				3F576B722808BCC800B9AA86 /* FieldOfficeView.swift */,
+				3F022670280E566B00747E63 /* SillyMeterView.swift */,
+				3F022672280E82D100747E63 /* InvasionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -173,14 +182,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F022671280E566B00747E63 /* SillyMeterView.swift in Sources */,
 				3F7847382807D5D00021BAE9 /* Population.swift in Sources */,
 				3F78472328074A1B0021BAE9 /* ContentView.swift in Sources */,
 				3F78473428074E680021BAE9 /* SillyMeter.swift in Sources */,
+				3F022673280E82D100747E63 /* InvasionView.swift in Sources */,
 				3F78473A2807D8080021BAE9 /* FieldOffice.swift in Sources */,
 				3F78473228074B4D0021BAE9 /* ToontownViewModel.swift in Sources */,
 				3F78473E2807DBAD0021BAE9 /* PopulationView.swift in Sources */,
 				3F78472128074A1B0021BAE9 /* ToontownProjectApp.swift in Sources */,
-				3F7847362807CE570021BAE9 /* Invasions.swift in Sources */,
+				3F576B732808BCC800B9AA86 /* FieldOfficeView.swift in Sources */,
+				3F7847362807CE570021BAE9 /* Invasion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
